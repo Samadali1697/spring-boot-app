@@ -1,6 +1,7 @@
 package com.samad.springbootapp.controllers;
 
 import com.samad.springbootapp.models.User;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -38,5 +39,14 @@ public class UserController {
     @GetMapping("/api/users")
     public List<User> getUsers() {
         return users;
+    }
+
+    @ResponseStatus(
+            value = HttpStatus.BAD_REQUEST,
+            reason = "Request ID not found"
+    )
+    @ExceptionHandler(IllegalArgumentException.class)
+    public void badResponse() {
+
     }
 }
