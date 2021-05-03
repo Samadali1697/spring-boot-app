@@ -13,10 +13,16 @@ public class UserController {
     private AtomicInteger userId = new AtomicInteger();
 
     @GetMapping("/api/user")
-    public String getHelloMessage(
+    public User getUser(
         @RequestParam("name") String username
     ) {
-        return String.format("hello %s!", username);
+        for (User user: users) {
+            if (user.getName().equals(username)) {
+                return user;
+            }
+        }
+
+        throw new IllegalArgumentException();
     }
 
     @PostMapping("/api/user")
