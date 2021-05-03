@@ -1,0 +1,17 @@
+
+
+## to get a single user
+curl -i -H 'Content-Type: application/json' \
+    -X GET --location "http://localhost:8080/api/user?name=samad"
+
+## to  insert new user
+curl -i -H "Content-Type: application/json" \
+    -X POST \
+    -d '{"name":"samad"}' \
+    http://localhost:8080/api/user
+
+
+## to get all in-memory users
+curl -i -H 'Content-Type: application/json' \
+    -X GET --location "http://localhost:8080/api/users"
+
